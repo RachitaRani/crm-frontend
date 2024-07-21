@@ -1,0 +1,78 @@
+  <div class="container">
+    <h2>Task Management</h2>
+    <form action="javascript: void(0);" id="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class="label-name">
+        <input type="text" class="form-control" [(ngModel)]="task.title" name="title" placeholder="Title" />
+        <span class="required">Title</span>
+      </label>
+      </div>
+      <div class="form-group">
+        <label class="label-name">
+        <input type="text" [(ngModel)]="task.description" name="description" placeholder="Description" class="form-control" />
+      <span class="required">Description</span>
+      </label>
+      </div>
+
+    <div class="form-group">
+      <label class="label-name">
+      <input type="date" [(ngModel)]="task.dueDate" name="dueDate" class="form-control" />
+  <span class="required">Due Date</span>
+  </label>  
+  </div>
+    <div class="form-group">
+      <label class="label-name">
+      <select class="form-control" id="priority" [(ngModel)]="task.priority" name="priority">
+        <option>High</option>
+        <option>Moderate</option>
+        <option>Low</option>
+        <option>Not disclosed</option>
+      </select>
+      <span class="required">Priority</span>
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="label-name">
+      <input type="number" [(ngModel)]="task.contactId" name="contactId" placeholder="Contact ID" class="form-control"/>
+    <span class="required">ContactId</span>
+    </label>
+    </div>
+      <button type="submit" class="btn btn--primary">Add Task</button>
+    </form>
+    <button class="btn btn-info mt-4" *ngIf="!showTasks" (click)="toggleTasks()">Show Tasks</button>
+        <button class="btn btn-info mt-4" *ngIf="showTasks" (click)="toggleTasks()">Hide Tasks</button>
+        <div *ngIf="showTasks" class="card mt-4">
+        <div class="card-body">
+        <table class="table mt-4">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Priority</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks; let i = index">
+          <td>{{ i+1 }}</td>
+          <td>{{ task.title }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.dueDate | date: 'yyyy-MM-dd'}}</td>
+          <td>{{ task.priority }}</td>
+          <td>
+            <div style="display: flex;">
+              <button (click)="editTask(task)" class="btn btn--secondary"><i class="fa fa-edit"></i></button>
+              <button *ngIf="task.id !== undefined"  (click)="deleteTask(task.id)" class="btn btn--danger"><i class="fa fa-trash"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+  </div>
+  
+  
+  

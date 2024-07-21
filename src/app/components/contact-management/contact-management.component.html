@@ -1,0 +1,56 @@
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+   <div class="container">
+        <h2>Contact Management</h2>
+        <form action="javascript: void(0);" id="form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label class="label-name">
+              <input type="text" class="form-control" id="name" required [(ngModel)]="contact.name" name="name" placeholder="John">
+              <span class="required">Name</span>
+            </label>
+            </div>
+          <div class="form-group">
+            <label class="label-email">
+              <input type="text" class="form-control" id="email" required [(ngModel)]="contact.email" name="email" placeholder="johndoe@gmail.com">
+              <span class="required">Email</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="label-email">
+              <input type="text" class="form-control" id="phone" required [(ngModel)]="contact.phone" name="phone" placeholder="XXXXXXXXXX">
+              <span class="required">Phone</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn--primary">Add Contact</button>
+        </form>
+        <button class="btn btn-info mt-4" *ngIf="!showContacts" (click)="toggleContacts()">Show Contacts</button>
+        <button class="btn btn-info mt-4" *ngIf="showContacts" (click)="toggleContacts()">Hide Contacts</button>
+        <div *ngIf="showContacts" class="card mt-4">
+        <div class="card-body">
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contact of contacts; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ contact.name }}</td>
+              <td>{{ contact.email }}</td>
+              <td>{{ contact.phone }}</td>
+              <td>
+                <div style="display: flex;"><button class="btn btn--secondary" (click)="editContact(contact)"><i class="fa fa-edit"></i></button>
+                  <button class="btn btn--danger" *ngIf="contact.id !== undefined" (click)="deleteContact(contact.id)"><i class="fa fa-trash"></i></button>
+               </div>
+                 </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        </div>
+
+      </div>

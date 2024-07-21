@@ -1,0 +1,68 @@
+  <div class="container">
+    <h2>Support Ticket Management</h2>
+    <form action="javascript: void(0);" id="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class="label-name">
+        <input type="text" class="form-control" [(ngModel)]="supportTicket.issue" name="issue" id="issue" placeholder="Ticket Description">
+        <span class="required">Issue</span>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="label-name">
+          <span class="required">Status</span>
+        <select class="form-control" id="status" [(ngModel)]="supportTicket.status" name="status" placeholder="--Select an option--">
+          <option selected>Open</option>
+          <option>In Progress</option>
+          <option>Closed</option>
+        </select>
+        </label>
+      </div>
+
+    <div class="form-group">
+      <label class="label-name">
+      <input type="date" class="form-control" id="createdAt" [(ngModel)]="supportTicket.createdAt" name="createdAt">
+      <span class="required">Added Date</span>
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="label-name">
+      <input type="number" [(ngModel)]="supportTicket.contactId" name="contactId" placeholder="Contact ID"/>
+      <span class="required">Contact Id</span>
+      </label>
+    </div>
+      <button type="submit" class="btn btn--primary">Add Ticket</button>
+    </form>
+    <button class="btn btn-info mt-4" *ngIf="!showTickets" (click)="toggleSupportTickets()">Show Tasks</button>
+        <button class="btn btn-info mt-4" *ngIf="showTickets" (click)="toggleSupportTickets()">Hide Tasks</button>
+        <div *ngIf="showTickets" class="card mt-4">
+        <div class="card-body">
+        <table class="table mt-4">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Issue</th>
+          <th>Status</th>
+          <th>Created Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ticket of supportTickets; let i=index">
+          <td>{{ i+1 }}</td>
+          <td>{{ ticket.issue }}</td>
+          <td>{{ ticket.status }}</td>
+          <td>{{ ticket.createdAt | date: 'yyyy-MM-dd'}}</td>
+          <td>
+            <div style="display: flex;">
+              <button class="btn btn--secondary btn-sm" (click)="editSupportTicket(ticket)"><i class="fa fa-edit"></i></button>
+              <button class="btn btn--danger btn-sm" *ngIf="ticket.id !== undefined" (click)="deleteSupportTicket(ticket.id)"><i class="fa fa-trash"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,82 @@
+<!-- <div>
+    <h2>Sales Management</h2>
+    <form (ngSubmit)="onSubmit()">
+      <input type="text" [(ngModel)]="sales.dealName" name="dealName" placeholder="Deal Name" required />
+      <input type="text" [(ngModel)]="sales.stage" name="stage" placeholder="Stage" required />
+      <input type="number" [(ngModel)]="sales.amount" name="amount" placeholder="Amount" required />
+      <input type="number" [(ngModel)]="sales.contactId" name="contactId" placeholder="Contact ID" required />
+      <button type="submit" class="btn btn--primary">Add Sales</button>
+    </form>
+  
+    <ul>
+      <li *ngFor="let sale of salesList">
+        {{ sale.dealName }} - {{ sale.stage }} - {{ sale.amount }} - {{ sale.contactId }}
+        <button (click)="editSales(sale)" class="btn btn--secondary">Edit</button>
+        <button *ngIf="sale.id !== undefined" (click)="deleteSales(sale.id)" class="btn btn--danger">Delete</button>
+      </li>
+    </ul>
+  </div> -->
+
+<div class="container">
+  <h2>Sales Management</h2>
+  <form action="javascript: void(0);" id="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label class="label-name">
+        <input type="text" [(ngModel)]="sales.dealName" name="dealName" placeholder="Deal Name" />
+        <span class="required">Deal Name</span>
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="label-name">
+        <input type="text" [(ngModel)]="sales.stage" name="stage" placeholder="Stage"/>
+        <span class="required">Stage</span>
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="label-name">
+        <input type="number" [(ngModel)]="sales.amount" name="amount" placeholder="0" />
+        <span class="required">Amount</span>
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="label-name">
+        <input type="number" [(ngModel)]="sales.contactId" name="contactId" />
+        <span class="required">ContactId</span>
+      </label>
+    </div>
+    <button type="submit" class="btn btn--primary">Add Sales</button>
+  </form> 
+
+  <button class="btn btn-info mt-4" *ngIf="!showSales" (click)="toggleSales()">Show Sales</button>
+  <button class="btn btn-info mt-4" *ngIf="showSales" (click)="toggleSales()">Hide Sales</button>
+  <div *ngIf="showSales" class="card mt-4">
+  <div class="card-body">
+  <table class="table mt-4">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Deal Name</th>
+          <th>Stage</th>
+          <th>Amount</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of salesList; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ sale.dealName }}</td>
+              <td> {{ sale.stage }}</td>
+              <td>{{ sale.amount }}</td>
+              <td>
+                <div style="display: flex;"><button (click)="editSales(sale)" class="btn btn--secondary"><i class="fa fa-edit"></i></button>
+                  <button *ngIf="sale.id !== undefined" (click)="deleteSales(sale.id)" class="btn btn--danger"><i class="fa fa-trash"></i></button>
+                </div>
+              </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+  

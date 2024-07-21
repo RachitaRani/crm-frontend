@@ -1,4 +1,33 @@
-  ul {
+
+header{
+display: grid;
+justify-content: space-around;
+background: #2196F3;
+align-items: center;
+
+}
+
+ul li{
+  display: inline;
+  
+}
+li a{
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 0 20px;
+
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+/* ul {
     list-style-type: none;
     margin: 0;
     overflow: hidden;
@@ -30,4 +59,4 @@
   
   .active {
     background-color: #04AA6D;
-  }
+  } */

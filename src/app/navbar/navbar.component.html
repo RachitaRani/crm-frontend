@@ -1,0 +1,13 @@
+    <header>
+      <div style="padding-left: 160px;"><a href="#" style="text-decoration: none; text-align: left; font-size: 50px;">Customer Resource Management</a></div>
+    <ul>
+      <li><a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li><a *ngIf="!isLoggedIn" routerLink="/register" routerLinkActive="active">Register</a></li>
+      <li><a *ngIf="isLoggedIn" routerLink="/contacts" routerLinkActive="active">Contact Management</a></li>
+      <li><a *ngIf="isLoggedIn" routerLink="/sales" routerLinkActive="active">Sales Management</a></li>
+      <li><a *ngIf="isLoggedIn" routerLink="/tasks" routerLinkActive="active">Task Management</a></li>
+      <li><a *ngIf="isLoggedIn" routerLink="/support-tickets" routerLinkActive="active">Support Ticket Management</a></li>
+      <li><a *ngIf="isLoggedIn" (click)="logout()" style="text-decoration: underline;">Logout</a></li>
+     </ul> 
+    </header> 
+
