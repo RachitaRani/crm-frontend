@@ -1,4 +1,13 @@
 # CrmFrontend
+<p>
+  <img src="images/Admin Login.png alt="Login Page Looks Like this">
+</p>
+  <p> After Succesful Login, The Home Page looks like below:
+  <img src ="Home Page.png" alt = "Home Page">
+</p>
+ <p> Table shown in the image is only visible to Admin and only they can edit or delete those contents. No other user is allowed to delete or edit the list.
+  <img src ="CM list view in admin.png" alt = "List View">
+</p>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
 
