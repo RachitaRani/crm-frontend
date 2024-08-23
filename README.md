@@ -1,6 +1,6 @@
 # CrmFrontend
 <p>
-  <img src="images/Admin Login.png alt="Login Page Looks Like this">
+  <img src="images/Admin Login.png" alt="Login Page Looks Like this">
 </p>
   <p> After Succesful Login, The Home Page looks like below:
   <img src ="images/Home Page.png" alt = "Home Page">
